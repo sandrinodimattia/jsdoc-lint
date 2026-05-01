@@ -10,6 +10,8 @@ Context is king. JSDoc lets teams colocate durable, human-readable context direc
 - top-level `const` declarations
 - direct properties inside top-level object-literal constants
 
+JSDoc blocks must be multiline. Single-line blocks like `/** Description. */` are reported the same way as missing JSDoc.
+
 ## Install
 
 ```sh

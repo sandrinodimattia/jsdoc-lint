@@ -116,7 +116,7 @@ export interface NormalizedOptions {
 }
 
 /**
- * A single missing-JSDoc diagnostic entry reported by the checker.
+ * A single missing or invalid JSDoc diagnostic entry reported by the checker.
  */
 export interface FailureEntry {
   /**

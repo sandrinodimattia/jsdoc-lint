@@ -228,17 +228,7 @@ function hasRequiredJsDoc(declaration: DocumentableDeclaration, sourceFile: ts.S
     return false;
   }
 
-  if (
-    declaration.kind === 'PropertySignature' ||
-    declaration.kind === 'PropertyDeclaration' ||
-    declaration.kind === 'TopLevelConstDeclaration' ||
-    declaration.kind === 'TopLevelConstPropertyAssignment' ||
-    declaration.kind === 'TopLevelConstShorthandProperty'
-  ) {
-    return jsDocBlocks.some((block) => block.getText(sourceFile).includes('\n'));
-  }
-
-  return true;
+  return jsDocBlocks.some((block) => isMultiLineJsDoc(block, sourceFile));
 }
 
 /**
@@ -284,6 +274,17 @@ function getJsDocBlocks(node: ts.Node | undefined): ts.JSDoc[] {
   }
 
   return ts.getJSDocCommentsAndTags(node).filter(ts.isJSDoc);
+}
+
+/**
+ * Checks whether a JSDoc block spans more than one source line.
+ *
+ * @param block JSDoc block to inspect.
+ * @param sourceFile Source file that owns the block.
+ * @returns True when the block is written over multiple lines.
+ */
+function isMultiLineJsDoc(block: ts.JSDoc, sourceFile: ts.SourceFile): boolean {
+  return block.getText(sourceFile).includes('\n');
 }
 
 /**

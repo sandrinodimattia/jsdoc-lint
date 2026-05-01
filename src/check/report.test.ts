@@ -3,7 +3,7 @@ import { formatJsonReport, formatReport } from './report.js';
 
 describe('formatReport', () => {
   test('formats an empty result', () => {
-    expect(formatReport({ failures: [] })).toBe('All checked declarations have JSDoc.');
+    expect(formatReport({ failures: [] })).toBe('All checked declarations have multiline JSDoc.');
   });
 
   test('formats grouped failures and JSON output', () => {
@@ -44,7 +44,7 @@ describe('formatReport', () => {
       ],
     };
 
-    expect(formatReport(result)).toContain('Missing JSDoc comments in 4 declarations across 2 packages.');
+    expect(formatReport(result)).toContain('Missing multiline JSDoc comments in 4 declarations across 2 packages.');
     expect(formatReport(result).indexOf('a (packages/a)')).toBeLessThan(formatReport(result).indexOf('b (packages/b)'));
     expect(formatReport(result).indexOf('packages/a/src/a.ts')).toBeLessThan(
       formatReport(result).indexOf('packages/a/src/other.ts')

@@ -8,13 +8,13 @@ import type { CheckResult, FailureEntry } from './types.ts';
  */
 export function formatReport(result: CheckResult): string {
   if (result.failures.length === 0) {
-    return 'All checked declarations have JSDoc.';
+    return 'All checked declarations have multiline JSDoc.';
   }
 
   const packageGroups = groupBy(result.failures, (failure) => failure.packageName);
   const packageNames = [...packageGroups.keys()].sort((left, right) => left.localeCompare(right));
   const lines = [
-    `Missing JSDoc comments in ${result.failures.length} declaration${result.failures.length === 1 ? '' : 's'} across ${packageGroups.size} package${packageGroups.size === 1 ? '' : 's'}.`,
+    `Missing multiline JSDoc comments in ${result.failures.length} declaration${result.failures.length === 1 ? '' : 's'} across ${packageGroups.size} package${packageGroups.size === 1 ? '' : 's'}.`,
     '',
   ];
 

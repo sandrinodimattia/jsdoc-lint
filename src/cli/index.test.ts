@@ -32,7 +32,7 @@ describe('runCli', () => {
     });
 
     expect(exitCode).toBe(1);
-    expect(errorOutput.join('')).toContain('Missing JSDoc comments in 1 declaration across 1 package.');
+    expect(errorOutput.join('')).toContain('Missing multiline JSDoc comments in 1 declaration across 1 package.');
     expect(errorOutput.join('')).toContain('FunctionDeclaration');
     expect(errorOutput.join('')).toContain('add');
   });
@@ -41,7 +41,7 @@ describe('runCli', () => {
     const workspaceRoot = await createWorkspace({
       'jsdoc.json': JSON.stringify({ roots: ['packages'], includeExtensions: ['ts'] }),
       'packages/utils/package.json': JSON.stringify({ name: '@scope/utils' }),
-      'packages/utils/src/clean.ts': '/** Add. */\nexport function add() {}\n',
+      'packages/utils/src/clean.ts': '/**\n * Add.\n */\nexport function add() {}\n',
       'packages/utils/src/dirty.ts': 'export function missing() {}\n',
     });
     const output: string[] = [];
@@ -59,7 +59,7 @@ describe('runCli', () => {
 
     expect(successCode).toBe(0);
     expect(jsonCode).toBe(1);
-    expect(output[0]).toBe('All checked declarations have JSDoc.');
+    expect(output[0]).toBe('All checked declarations have multiline JSDoc.');
     expect(JSON.parse(output[1] ?? '{}').failures[0].name).toBe('missing');
   });
 
