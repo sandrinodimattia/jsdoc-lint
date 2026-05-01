@@ -1,0 +1,70 @@
+{
+  "name": "jsdoc-lint",
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.30.3",
+  "description": "A TypeScript library and CLI for linting JSDoc comments.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandrinodimattia/jsdoc-lint.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sandrinodimattia/jsdoc-lint/issues"
+  },
+  "homepage": "https://github.com/sandrinodimattia/jsdoc-lint#readme",
+  "keywords": [
+    "jsdoc",
+    "lint",
+    "typescript",
+    "cli"
+  ],
+  "bin": {
+    "jsdoc-lint": "./dist/cli/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./cli": {
+      "types": "./dist/cli/index.d.ts",
+      "import": "./dist/cli/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "check": "biome check .",
+    "dev": "node src/cli/index.ts",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "prepack": "pnpm run build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "typescript": "^6.0.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.13",
+    "@types/node": "^24.12.2",
+    "@vitest/coverage-v8": "^4.1.5",
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
+  }
+}
