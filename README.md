@@ -1,10 +1,8 @@
 # jsdoc-lint
 
-A TypeScript library and CLI for finding JavaScript and TypeScript declarations that are missing JSDoc comments.
+Context is king. JSDoc lets teams colocate durable, human-readable context directly with the code agents need to inspect and modify. `jsdoc-lint` helps validate that your codebase has the necessary JSDoc comments in place, so important intent, constraints, and usage notes stay close to the code, giving your agents the necessary context co-located with your code.
 
-`jsdoc-lint` is authored in TypeScript, publishes built JavaScript and declarations, and targets Node.js 24.
-
-The checker covers:
+`jsdoc-lint` is authored in TypeScript, publishes built JavaScript and declarations, and targets Node.js 24. The checker covers:
 
 - functions and function-like declarations
 - classes, interfaces, and type aliases
