@@ -20,7 +20,7 @@
     "cli"
   ],
   "bin": {
-    "jsdoc-lint": "./dist/cli/index.js"
+    "jsdoc-lint": "dist/cli/index.js"
   },
   "exports": {
     ".": {
