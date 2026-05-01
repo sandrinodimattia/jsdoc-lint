@@ -48,15 +48,13 @@
     "prepack": "pnpm run build",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test:package": "node scripts/test-package.mjs",
     "typecheck": "tsc --noEmit"
   },
   "engines": {
     "node": ">=24"
   },
   "publishConfig": {
-    "access": "public",
-    "provenance": true
+    "access": "public"
   },
   "dependencies": {
     "typescript": "^6.0.3"

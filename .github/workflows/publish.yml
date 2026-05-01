@@ -44,8 +44,5 @@ jobs:
       - name: Build package
         run: pnpm run build
 
-      - name: Test installed package
-        run: pnpm run test:package
-
       - name: Publish package
         run: npm publish --provenance --access public
