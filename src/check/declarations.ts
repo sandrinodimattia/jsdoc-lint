@@ -99,6 +99,10 @@ function getDocumentableDeclaration(node: ts.Node): DocumentableDeclaration | nu
     return createDocumentableDeclaration('PropertySignature', node.name.getText(), node, node);
   }
 
+  if (ts.isMethodSignature(node) && isNamedDeclarationTypeMember(node.parent)) {
+    return createDocumentableDeclaration('MethodSignature', node.name.getText(), node, node);
+  }
+
   if (ts.isVariableStatement(node) && isTopLevelConstStatement(node)) {
     const declaration = node.declarationList.declarations[0];
     if (!declaration || isFunctionLikeInitializer(declaration.initializer)) {
@@ -241,6 +245,7 @@ function hasRequiredJsDoc(declaration: DocumentableDeclaration, sourceFile: ts.S
 function hasRequiredMemberSpacing(declaration: DocumentableDeclaration, sourceFile: ts.SourceFile): boolean {
   if (
     declaration.kind !== 'PropertySignature' &&
+    declaration.kind !== 'MethodSignature' &&
     declaration.kind !== 'PropertyDeclaration' &&
     declaration.kind !== 'TopLevelConstDeclaration' &&
     declaration.kind !== 'TopLevelConstPropertyAssignment' &&
